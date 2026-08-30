@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Mapped from the original Vite app's frontend/src/index.css custom properties
+   (--bg/--text/--text-h/--border/--accent/--code-bg) onto shadcn's semantic
+   token names, so the visual identity carries over rather than starting from
+   shadcn's default neutral palette. Hex/rgba values are unchanged from the
+   original — only the variable names changed to match shadcn's convention. */
+:root {
+  --background: #ffffff;
+  --foreground: #08060d;
+  --card: #ffffff;
+  --card-foreground: #08060d;
+  --popover: #ffffff;
+  --popover-foreground: #08060d;
+  --primary: #aa3bff;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f3ec;
+  --secondary-foreground: #08060d;
+  --muted: #f4f3ec;
+  --muted-foreground: #6b6375;
+  --accent: rgba(170, 59, 255, 0.1);
+  --accent-foreground: #aa3bff;
+  --destructive: #e05c5c;
+  --border: #e5e4e7;
+  --input: #e5e4e7;
+  --ring: rgba(170, 59, 255, 0.5);
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #08060d;
+  --sidebar-primary: #aa3bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(170, 59, 255, 0.1);
+  --sidebar-accent-foreground: #aa3bff;
+  --sidebar-border: #e5e4e7;
+  --sidebar-ring: rgba(170, 59, 255, 0.5);
+}
+
+.dark {
+  --background: #16171d;
+  --foreground: #f3f4f6;
+  --card: #16171d;
+  --card-foreground: #f3f4f6;
+  --popover: #16171d;
+  --popover-foreground: #f3f4f6;
+  --primary: #c084fc;
+  --primary-foreground: #16171d;
+  --secondary: #1f2028;
+  --secondary-foreground: #f3f4f6;
+  --muted: #1f2028;
+  --muted-foreground: #9ca3af;
+  --accent: rgba(192, 132, 252, 0.15);
+  --accent-foreground: #c084fc;
+  --destructive: #e05c5c;
+  --border: #2e303a;
+  --input: #2e303a;
+  --ring: rgba(192, 132, 252, 0.5);
+  --sidebar: #16171d;
+  --sidebar-foreground: #f3f4f6;
+  --sidebar-primary: #c084fc;
+  --sidebar-primary-foreground: #16171d;
+  --sidebar-accent: rgba(192, 132, 252, 0.15);
+  --sidebar-accent-foreground: #c084fc;
+  --sidebar-border: #2e303a;
+  --sidebar-ring: rgba(192, 132, 252, 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Brand gradient treatments — a low-opacity violet glow derived from the
+   existing --primary token, not a new color. Used sparingly behind auth
+   pages and the dashboard header, never as a full-bleed hero. */
+@layer utilities {
+  .brand-glow {
+    background-image:
+      radial-gradient(60% 50% at 15% 0%, color-mix(in oklch, var(--primary), transparent 88%), transparent 65%),
+      radial-gradient(45% 40% at 100% 0%, color-mix(in oklch, var(--primary), transparent 92%), transparent 60%);
+  }
+  .brand-mark {
+    background-image: linear-gradient(135deg, var(--primary), color-mix(in oklch, var(--primary), white 35%));
+  }
+}

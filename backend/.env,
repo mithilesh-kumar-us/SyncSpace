@@ -1,0 +1,16 @@
+# Copy to .env and fill in real values — .env is gitignored, this file isn't.
+
+MONGO_URI=mongodb://localhost:27017/syncspace
+PORT=4000
+
+# Used to relay Yjs sync/awareness updates between backend instances, so
+# running more than one process behind a load balancer stays consistent —
+# without this, a client connected to instance A would never see edits made
+# by a client connected to instance B.
+REDIS_URL=redis://localhost:6380
+
+# Generate with: openssl rand -hex 32
+JWT_SECRET=
+
+# Origin the frontend runs on, for CORS
+CLIENT_ORIGIN=http://localhost:5173
