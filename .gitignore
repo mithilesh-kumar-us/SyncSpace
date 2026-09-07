@@ -1,0 +1,25 @@
+# This root .gitignore only covers repo-wide, OS/editor-level junk.
+# backend/ and web/ each keep their own .gitignore for their runtime-specific
+# artifacts (node_modules, .next, .env, etc.) since those differ per package.
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env files, as a repo-wide safety net (each package also ignores its own)
+.env
+.env.local
+.env.*.local
+!.env.example

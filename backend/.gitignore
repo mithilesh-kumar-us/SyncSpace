@@ -1,2 +1,22 @@
+# dependencies
 node_modules/
+
+# env files — real secrets never get committed, only .env.example does
 .env
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# test/coverage output
+coverage/
+
+# build output, if this ever gains a build step
+dist/
